@@ -20,7 +20,7 @@ eureka:
 resilience4j:
   circuitbreaker:
     instances:
-      shoppingCartService:
+      product-service:
         register-health-indicator: true
         failure-rate-threshold: 50 
         minimum-number-of-calls: 10 
@@ -30,6 +30,6 @@ resilience4j:
         sliding-window-type: COUNT_BASED 
   retry:
     instances:
-      shoppingCartService:
+      product-service:
         max-attempts: 3 
         wait-duration: 1s
