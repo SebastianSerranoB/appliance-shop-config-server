@@ -4,18 +4,47 @@ The Config Server is a pivotal component of the Appliance Shop Microservices App
 
 ## Features
 
-- **Centralized Configuration Management**: Stores and serves configuration settings for all microservices from a central repository.&#8203;:contentReference[oaicite:5]{index=5}
-- **Dynamic Configuration Updates**: :contentReference[oaicite:6]{index=6}&#8203;:contentReference[oaicite:7]{index=7}
-- **Environment-Specific Configurations**: :contentReference[oaicite:8]{index=8}&#8203;:contentReference[oaicite:9]{index=9}
+- **Centralized Configuration Management**: Stores and serves configuration settings for all microservices from a central 
+- **Dynamic Configuration Updates**
+- **Environment-Specific Configurations**
 
 ## Prerequisites
 
-- **Java 21**: :contentReference[oaicite:10]{index=10}&#8203;:contentReference[oaicite:11]{index=11}
-- **Git**: :contentReference[oaicite:12]{index=12}&#8203;:contentReference[oaicite:13]{index=13}
+- **Java 21**
+- **Git**
 
 ## Setup Instructions
 
-1. **Clone the Repository**:
+1) **Clone the Repository**:
 
-   ```bash
-   git clone https://github.com/SebastianSerranoB/appliance-shop-config-server.git
+      git clone https://github.com/SebastianSerranoB/appliance-shop-config-server.git
+
+2) **Configure the Configuration Repository:**
+
+   Update the application.yml file to specify the location of your configuration repository. This can be a Git repository or a local file system path.
+
+      spring:
+        cloud:
+          config:
+            server:
+              git:
+                uri: https://github.com/your-config-repo.git
+
+ 3) **Run the Config Server:**
+         ./mvnw spring-boot:run
+    The server will start on the default port 8888.
+
+## Accessing Configurations
+
+Microservices can retrieve their configurations by making HTTP requests to the Config Server. For example, to fetch configurations for a service named product-service in the development environment:
+
+http://localhost:8888/product-service/development
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request with your enhancements or fixes.
+
+## License
+On the way!
+
+This README provides a clear overview of the Config Server's purpose, features, setup instructions, and usage, ensuring that developers can effectively integrate and utilize it within the Appliance Shop Microservices Application.
